@@ -1,0 +1,18 @@
+[tool.pyright]
+reportGeneralTypeIssues = "information"
+ignore = ["venv"]
+pythonPlatform = "Darwin"
+pythonVersion = "3.10"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+py_version = 310
+line_length = 88
+known_first_party = "foodprep"
+combine_star = true
+combine_straight_imports = true
+overwrite_in_place = true

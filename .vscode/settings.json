@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "/Users/jkwill87/Downloads/FoodData/venv/bin/python",
+    "editor.rulers": [
+        88
+    ],
+    "editor.formatOnSave": true,
+    "explorer.sortOrder": "default",
+    "[json]": {
+        "editor.formatOnSave": false
+    },
+    "editor.stopRenderingLineAfter": 100000
+}

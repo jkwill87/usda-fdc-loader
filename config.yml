@@ -1,0 +1,15 @@
+edition: "2021-10-28"
+
+datasets:
+  - foundation
+  - survey
+  # - branded
+  # - legacy
+
+formats:
+  - csv
+  - ndjson
+  - sqlite
+
+outdir: ./out
+tempdir: ./temp
