@@ -7,7 +7,6 @@ datasets:
   # - legacy
 
 formats:
-  - csv
   - ndjson
   - sqlite
 
