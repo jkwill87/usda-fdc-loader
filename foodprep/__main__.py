@@ -1,3 +1,4 @@
+import sys
 from argparse import ArgumentParser
 from sqlite3 import connect
 
@@ -18,6 +19,11 @@ from foodprep.dataset import (
     LegacyDataset,
     SurveyDataset,
 )
+
+
+def enforce_python_version():
+    if not sys.version_info >= (3, 10):
+        raise RuntimeError("Python 3.10 or higher required.")
 
 
 def main():
@@ -67,4 +73,5 @@ def main():
 
 
 if __name__ == "__main__":
+    enforce_python_version()
     main()
