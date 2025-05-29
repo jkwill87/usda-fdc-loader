@@ -16,8 +16,8 @@ from foodprep.dataset import Dataset
 
 
 def enforce_python_version():
-    if not sys.version_info >= (3, 10):
-        raise RuntimeError("Python 3.10 or higher required.")
+    if not sys.version_info >= (3, 13):
+        raise RuntimeError("Python 3.13 or higher required.")
 
 
 def main():

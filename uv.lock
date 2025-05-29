@@ -33,6 +33,15 @@ wheels = [
 ]
 
 [[package]]
+name = "packaging"
+version = "25.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz", hash = "sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f", size = 165727, upload-time = "2025-04-19T11:48:59.673Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl", hash = "sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484", size = 66469, upload-time = "2025-04-19T11:48:57.875Z" },
+]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -75,6 +84,28 @@ wheels = [
 ]
 
 [[package]]
+name = "setuptools"
+version = "80.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/18/5d/3bf57dcd21979b887f014ea83c24ae194cfcd12b9e0fda66b957c69d1fca/setuptools-80.9.0.tar.gz", hash = "sha256:f36b47402ecde768dbfafc46e8e4207b4360c654f1f3bb84475f0a28628fb19c", size = 1319958, upload-time = "2025-05-27T00:56:51.443Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a3/dc/17031897dae0efacfea57dfd3a82fdd2a2aeb58e0ff71b77b87e44edc772/setuptools-80.9.0-py3-none-any.whl", hash = "sha256:062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922", size = 1201486, upload-time = "2025-05-27T00:56:49.664Z" },
+]
+
+[[package]]
+name = "setuptools-scm"
+version = "8.3.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+    { name = "setuptools" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b9/19/7ae64b70b2429c48c3a7a4ed36f50f94687d3bfcd0ae2f152367b6410dff/setuptools_scm-8.3.1.tar.gz", hash = "sha256:3d555e92b75dacd037d32bafdf94f97af51ea29ae8c7b234cf94b7a5bd242a63", size = 78088, upload-time = "2025-04-23T11:53:19.739Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ab/ac/8f96ba9b4cfe3e4ea201f23f4f97165862395e9331a424ed325ae37024a8/setuptools_scm-8.3.1-py3-none-any.whl", hash = "sha256:332ca0d43791b818b841213e76b1971b7711a960761c5bea5fc5cdb5196fbce3", size = 43935, upload-time = "2025-04-23T11:53:17.922Z" },
+]
+
+[[package]]
 name = "teletype"
 version = "1.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -85,12 +116,12 @@ wheels = [
 
 [[package]]
 name = "usda-fdc-loader"
-version = "0.2.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "attrs" },
     { name = "cattrs" },
     { name = "pyyaml" },
+    { name = "setuptools-scm" },
     { name = "teletype" },
 ]
 
@@ -98,6 +129,7 @@ dependencies = [
 dev = [
     { name = "isort" },
     { name = "ruff" },
+    { name = "setuptools-scm" },
 ]
 
 [package.metadata]
@@ -105,6 +137,7 @@ requires-dist = [
     { name = "attrs", specifier = "==21.4.*" },
     { name = "cattrs", specifier = "==1.10.*" },
     { name = "pyyaml", specifier = "==6.*" },
+    { name = "setuptools-scm", specifier = "==8.*" },
     { name = "teletype", specifier = "==1.1.*" },
 ]
 
@@ -112,4 +145,5 @@ requires-dist = [
 dev = [
     { name = "isort", specifier = ">=6.0.1" },
     { name = "ruff", specifier = ">=0.11.11" },
+    { name = "setuptools-scm", specifier = ">=8.3" },
 ]

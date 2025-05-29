@@ -1,5 +1,9 @@
+*.egg-info
 .DS_Store
+.venv
+.zed
+build
 datasets
+foodprep/__version__.py
 out
 temp
-venv
