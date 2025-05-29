@@ -1,12 +1,33 @@
+[project]
+name = "usda-fdc-loader"
+version = "0.2.0"
+description = "A Python package to load and process USDA FoodData Central data."
+readme = "readme.md"
+requires-python = ">=3.13"
+dependencies = [
+    "attrs==21.4.*",
+    "cattrs==1.10.*",
+    "teletype==1.1.*",
+    "pyyaml==6.*",
+]
+
+[dependency-groups]
+dev = [
+    "isort>=6.0.1",
+    "ruff>=0.11.11",
+]
+
 [tool.pyright]
 reportGeneralTypeIssues = "information"
-ignore = ["venv"]
-pythonPlatform = "Darwin"
-pythonVersion = "3.10"
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.13"
 
-[tool.black]
+[tool.ruff]
 line-length = 88
-target-version = ["py310"]
+indent-width = 4
+target-version = "py313"
+exclude = [".venv", ".vscode"]
 
 [tool.isort]
 profile = "black"

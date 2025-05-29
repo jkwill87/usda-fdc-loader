@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-import json, re
+import json
+import re
 from textwrap import dedent
 from typing import Any, Iterable
 

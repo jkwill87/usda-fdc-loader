@@ -25,34 +25,32 @@ class Dataset(ABC):
     name: str
 
     @classmethod
-    @property
     def temp_zip_path(cls):
         return TEMP_PATH / f"{cls.name}.zip"
 
     @classmethod
-    @property
     def temp_ndjson_path(cls):
         return TEMP_PATH / f"{cls.name}.ndjson"
 
     def temp_zip_download(self, force: bool = False):
-        if self.temp_zip_path.exists() and not force:
+        if self.temp_zip_path().exists() and not force:
             return
         with measure(f"downloading {self.name}"):
             src_zip_filename = f"FoodData_Central_{self.name}_food_json_{EDITION}.zip"
             url = f"https://fdc.nal.usda.gov/fdc-datasets/{src_zip_filename}"
-            urlretrieve(url, self.temp_zip_path)
+            urlretrieve(url, self.temp_zip_path())
 
     def temp_zip_extract(self, force: bool = False):
-        if self.temp_ndjson_path.exists() and not force:
+        if self.temp_ndjson_path().exists() and not force:
             return
         src_json_filename = f"FoodData_Central_{self.name}_food_json_{EDITION}.json"
         src_json_path = TEMP_PATH / src_json_filename
         with measure(f"extracting {self.name}"):
-            with ZipFile(self.temp_zip_path, "r") as zipfile:
+            with ZipFile(self.temp_zip_path(), "r") as zipfile:
                 zipfile.extract(src_json_filename, TEMP_PATH)
             with (
                 open(src_json_path, "r") as src_json_file,
-                open(self.temp_ndjson_path, "w") as temp_ndjson_file,
+                open(self.temp_ndjson_path(), "w") as temp_ndjson_file,
             ):
                 line_count = count_lines(src_json_path)
                 eof = line_count - 1
@@ -64,7 +62,7 @@ class Dataset(ABC):
     def __iter__(self) -> Iterator[IngredientModel]:
         with (
             measure(f"parsing {self.name}"),
-            open(self.temp_ndjson_path, "r") as lines,
+            open(self.temp_ndjson_path(), "r") as lines,
         ):
             for line in lines:
                 source_data: dict[str, Any] = json.loads(line)
