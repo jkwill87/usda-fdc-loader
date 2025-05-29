@@ -2,13 +2,13 @@ from pathlib import Path
 
 import yaml
 
-__all__ = ["EDITION", "DATASET_SOURCES", "OUT_PATH", "TEMP_PATH"]
+__all__ = ["DATASET_SOURCES", "OUT_PATH", "TEMP_PATH"]
 
 with open("config.yml", "r") as config_file:
     config_data = yaml.safe_load(config_file)
 
-assert (EDITION := config_data["edition"])
-assert (DATASET_SOURCES := tuple(config_data["datasets"]))
+DATASET_SOURCES: dict[str, str] = config_data["datasets"]
+assert isinstance(DATASET_SOURCES, dict)
 assert (SERIALIZATION_FORMATS := tuple(config_data["formats"]))
 OUT_PATH = Path(config_data.get("outdir", "./datasets"))
 TEMP_PATH = Path(config_data.get("tempdir", "./temp"))

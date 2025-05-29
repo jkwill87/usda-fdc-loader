@@ -12,13 +12,7 @@ from foodprep.const import (
     SERIALIZATION_FORMATS,
     TEMP_PATH,
 )
-from foodprep.dataset import (
-    BrandedDataset,
-    Dataset,
-    FoundationDataset,
-    LegacyDataset,
-    SurveyDataset,
-)
+from foodprep.dataset import Dataset
 
 
 def enforce_python_version():
@@ -43,14 +37,9 @@ def main():
 
     # Initialize dataset datastructures
     datasets: list[Dataset] = []
-    if "foundation" in DATASET_SOURCES:
-        datasets.append(FoundationDataset())
-    if "survey" in DATASET_SOURCES:
-        datasets.append(SurveyDataset())
-    if "branded" in DATASET_SOURCES:
-        datasets.append(BrandedDataset())
-    if "legacy" in DATASET_SOURCES:
-        datasets.append(LegacyDataset())
+    for name, edition in DATASET_SOURCES.items():
+        assert name in {"foundation", "survey", "branded", "legacy", "sr_legacy"}
+        datasets.append(Dataset(name=name, edition=edition))
 
     # Initialize sqlite database
     connection = connect(DATASET_SQLITE_PATH)

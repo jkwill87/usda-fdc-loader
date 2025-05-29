@@ -1,10 +1,8 @@
-edition: "2021-10-28"
-
 datasets:
-  - foundation
-  - survey
-  # - branded
-  # - legacy
+  foundation: "2025-04-24"
+  survey: "2024-10-31"
+  sr_legacy: "2018-04"
+  # branded: 2025-04-24
 
 formats:
   - ndjson
